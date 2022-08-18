@@ -1,0 +1,10 @@
+<div class="container">
+  <h1><%= @movie.title  %></h1>
+  <div class="container">
+    <%= image_tag(@movie.poster_url, style: 'width: 50%;height:auto;' )  %>
+  </div>
+  <br>
+  <p><%= @movie.overview  %></p>
+  <br>
+  <p>Find me in app/views/movies/show.html.erb</p>
+</div>
