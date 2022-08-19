@@ -1,5 +1,21 @@
-<h1><%= @list.name  %></h1>
+<div class="container">
+  <h1><%= @list.name  %></h1>
 
-<p>Find me in app/views/lists/show.html.erb</p>
+  <p>Find me in app/views/lists/show.html.erb</p>
 
-<%= link_to 'add a movie', movies_path, class: "btn btn-primary"  %>
+  <%= link_to 'add a movie', new_list_bookmark_path(@list), class: "btn btn-primary"  %>
+  <br>
+
+  <div class="container">
+  <% @bookmarks.each do  |bookmark|%>
+    <ul>
+    <%= Movie.find(bookmark.movie_id).title %>
+
+    </ul>
+  <% end %>
+
+    <br>
+    <%= link_to 'show all movies', movies_path, class: "btn btn-warning"  %>
+    <br>
+  </div>
+</div>

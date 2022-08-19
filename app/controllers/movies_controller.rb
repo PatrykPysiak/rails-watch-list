@@ -7,6 +7,10 @@ class MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
   end
 
+  def list
+    @movies = Movie.all
+  end
+
   def new
   end
 end

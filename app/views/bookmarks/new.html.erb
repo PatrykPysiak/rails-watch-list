@@ -1,0 +1,9 @@
+
+<% titles = [] %>
+<% @movies.each {|movie| titles<<movie.title} %>
+
+<%= simple_form_for [@list, @bookmark] do |f| %>
+  <%= f.input :comment %>
+  <%= f.association :movie, collection: @movies %>
+  <%= f.button :submit, class: "btn btn-secondary" %>
+<% end %>
