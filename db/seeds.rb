@@ -8,14 +8,15 @@ require 'json'
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 url = 'https://tmdb.lewagon.com/movie/top_rated'
+
 uri = URI(url)
 response = Net::HTTP.get(uri)
 data = JSON.parse(response)
 
-data['results'].each { |item| puts item['title']}
-data['results'].each { |item| puts item['overview']}
-data['results'].each { |item| puts item['vote_average']}
-data['results'].each { |item| puts "https://image.tmdb.org/t/p/original#{item['poster_path']}"}
+# data['results'].each { |item| puts item['title']}
+# data['results'].each { |item| puts item['overview']}
+# data['results'].each { |item| puts item['vote_average']}
+# data['results'].each { |item| puts "https://image.tmdb.org/t/p/original#{item['poster_path']}"}
 data['results'].each do |item|
   puts "seeding: #{item['title']}..."
 Movie.create(title: item['title'], overview: item['overview'], poster_url: "https://image.tmdb.org/t/p/original#{item['poster_path']}", rating: item['vote_average'])
